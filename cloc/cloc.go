@@ -32,7 +32,7 @@ func main() {
 	for _, path := range files {
 		count, err := count(path)
 		if err != nil {
-			fmt.Print(err.Error())
+			os.Stderr.WriteString(err.Error())
 			return
 		}
 
