@@ -32,8 +32,8 @@ func main() {
 	for _, path := range files {
 		count, err := count(path)
 		if err != nil {
-			fmt.Printf("%s\n", err.Error())
-			continue
+			fmt.Print(err.Error())
+			return
 		}
 
 		totalCount += count
