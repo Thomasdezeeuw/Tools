@@ -6,8 +6,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 )
 
@@ -39,5 +39,8 @@ func main() {
 	}
 
 	fmt.Printf("Serving directory %s, on port %s.\n", nameDir, port)
-	log.Fatal(http.ListenAndServe(":"+port, http.FileServer(http.Dir(dir))))
+	err := http.ListenAndServe(":"+port, http.FileServer(http.Dir(dir)))
+	if err != nil {
+		os.Stderr.WriteString(err.Error())
+	}
 }
