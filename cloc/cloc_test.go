@@ -182,7 +182,8 @@ func TestCountFile(t *testing.T) {
 		{"testdata2/testdata3/file.tmpl", 0, ""},
 		{"testdata2/testdata3/README.md", 0, ""},
 		{"not_found", 0, ""},
-		{"not_found.go", 0, "open _testdata/not_found.go: The system cannot find the file specified."},
+		{"not_found.go", 0, "open _testdata" + string(os.PathSeparator) +
+			"not_found.go: The system cannot find the file specified."},
 	}
 
 	for _, test := range tests {

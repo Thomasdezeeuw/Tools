@@ -104,6 +104,8 @@ func getFileOptions(args []string) []string {
 // Possible returned errors are mostly related to not being able to open or
 // read the given path.
 func count(path string) (int, error) {
+	path = filepath.Clean(path)
+
 	// Open the file.
 	file, err := os.Open(path)
 	if err != nil {
@@ -136,6 +138,8 @@ func count(path string) (int, error) {
 // TODO(Thomas): support for ignoring directories.
 // TODO(Thomas): support for setting recursive level.
 func countDir(dirpath string) (int, error) {
+	dirpath = filepath.Clean(dirpath)
+
 	// Grap all the files and directories in the given directory.
 	files, err := ioutil.ReadDir(dirpath)
 	if err != nil {
@@ -194,6 +198,8 @@ func countDir(dirpath string) (int, error) {
 // BUG(Thomas): Doesn't work with all encodings, BOM enconding generally
 // doesn't work.
 func countFile(path string) (int, error) {
+	path = filepath.Clean(path)
+
 	// Get the langauge from the file path.
 	lang := getLanguage(path)
 
