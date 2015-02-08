@@ -20,6 +20,7 @@ Run through the command line:
 
 ```bash
 $ serve
+Serving directory my_dir, on port 8000.
 ```
 
 ## Options
@@ -28,10 +29,12 @@ $ serve
 
 ```bash
 $ serve -d public
+Serving directory public, on port 8000.
 ```
 
 **Port (*-p*)**. The port to listen on, defaults to 8000.
 
 ```bash
 $ serve -p 9000
+Serving directory my_dir, on port 9000.
 ```

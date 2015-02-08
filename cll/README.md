@@ -22,12 +22,15 @@ Run through the command line:
 $ cll
 ```
 
+No result means no to long lines.
+
 ## Options
 
 Specifying files and/or directories.
 
 ```bash
 $ cloc my_file my_folder
+my_folder/my_file line 2 is 90 characters long.
 ```
 
 **Length (*-l*)**. The maxmimum allowed length of a line, defaults to 80.
