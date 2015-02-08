@@ -1,4 +1,5 @@
-// Copyright (C) 2014 Thomas de Zeeuw.
+// Copyright (C) 2015 Thomas de Zeeuw.
+//
 // Licensed onder the MIT license that can be found in the LICENSE file.
 
 // TODO(Thomas): Add code to files with 0 lines of code in the test directory
