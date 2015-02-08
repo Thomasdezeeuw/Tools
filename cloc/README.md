@@ -27,5 +27,5 @@ $ cloc
 Specifying files and/or directories.
 
 ```bash
-$ cloc cloc.go _testdata
+$ cloc my_file my_folder
 ```
