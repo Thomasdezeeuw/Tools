@@ -1,5 +1,7 @@
 # Cll
 
+[![Coverage](http://gocover.io/_badge/github.com/Thomasdezeeuw/tools/cll)](http://gocover.io/github.com/Thomasdezeeuw/tools/cll)
+
 > Version 0.0.1
 
 Cll checks if all lines have a length within the maximum allowed length.

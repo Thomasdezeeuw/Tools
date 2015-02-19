@@ -1,5 +1,7 @@
 # Cloc
 
+[![Coverage](http://gocover.io/_badge/github.com/Thomasdezeeuw/tools/cloc)](http://gocover.io/github.com/Thomasdezeeuw/tools/cloc)
+
 > Version 0.0.1
 
 Cloc counts the number of lines of code in a given file or directory.
