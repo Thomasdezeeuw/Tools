@@ -71,7 +71,8 @@ func getFileOptions(args []string) []string {
 
 			// If the argument starts with - or --, we need to skip it aswell as the
 			// next one.
-			if (len(arg) >= 1 && arg[:1] == "-") || (len(arg) >= 2 && arg[:2] == "--") {
+			length := len(arg)
+			if (length >= 1 && arg[:1] == "-") || (length >= 2 && arg[:2] == "--") {
 				skip = true
 				continue
 			}

@@ -265,9 +265,10 @@ func TestMain(t *testing.T) {
 		expected string
 	}
 
+	file := "languages.go"
 	tests := []test{
-		{[]string{"", "languages.go"}, "languages.go contains 162 lines of code.\n"},
-		{[]string{"", "languages.go", "README.md"}, "languages.go contains 162 lines of code.\n" +
+		{[]string{"", file}, file + " contains 162 lines of code.\n"},
+		{[]string{"", file, "README.md"}, file + " contains 162 lines of code.\n" +
 			"README.md contains 0 lines of code.\nTotal number of lines: 162.\n"},
 	}
 
@@ -302,7 +303,8 @@ func TestMain(t *testing.T) {
 		output := <-outputChannel
 
 		if output != test.expected {
-			t.Errorf("Expected the output to be '%s', got '%s'", test.expected, output)
+			t.Errorf("Expected the output to be '%s', got '%s'",
+				test.expected, output)
 		}
 	}
 
