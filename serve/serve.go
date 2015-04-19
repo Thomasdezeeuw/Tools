@@ -32,7 +32,11 @@ func init() {
 func main() {
 	flag.Parse()
 
-	dir = filepath.Join("./", dir)
+	// Either grap the directory from the -d flag or use the first argument.
+	if flag.Arg(0) != "" && dir == "" {
+		dir = flag.Arg(0)
+	}
+	dir = filepath.Join(".", dir)
 
 	nameDir := dir
 	if nameDir == "." {
