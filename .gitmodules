@@ -1,3 +1,6 @@
 [submodule "watch/vendor/gopkg.in/fsnotify.v1"]
 	path = watch/vendor/gopkg.in/fsnotify.v1
 	url = https://gopkg.in/fsnotify.v1
+[submodule "git-changelog/_testdata/repo"]
+	path = git-changelog/_testdata/repo
+	url = ./git-changelog/_testdata/repo/.git/
