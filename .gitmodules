@@ -1,0 +1,3 @@
+[submodule "watch/vendor/gopkg.in/fsnotify.v1"]
+	path = watch/vendor/gopkg.in/fsnotify.v1
+	url = https://gopkg.in/fsnotify.v1
