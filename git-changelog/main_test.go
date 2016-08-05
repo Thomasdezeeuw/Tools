@@ -45,11 +45,10 @@ message: A simple test commit, safe to ignore.
 func TestParseGitLog(t *testing.T) {
 	t.Parallel()
 
-	var r strings.Reader
 	for i, test := range commitInput {
-		r.Reset(test)
+		r := strings.NewReader(test)
 
-		got, err := parseGitLog(&r)
+		got, err := parseGitLog(r)
 		if err != nil {
 			t.Fatalf("Unexpected error parsing testdata: %s", err)
 		}
