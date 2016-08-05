@@ -41,9 +41,11 @@ func TestMainTestData(t *testing.T) {
 	os.Args = []string{"", "testdata"}
 	main()
 
-	expected := `  - [ ] More testdata! (testdata\more_testdata.go, line 4).
-  - [ ] Not enough o's we need to add more o's! (testdata\more_testdata.go, line 10).
-  - [ ] Be more excited (testdata\testdata.go, line 5).
+	const separator = string(os.PathSeparator)
+
+	expected := `  - [ ] More testdata! (testdata` + separator + `more_testdata.go, line 4).
+  - [ ] Not enough o's we need to add more o's! (testdata` + separator + `more_testdata.go, line 10).
+  - [ ] Be more excited (testdata` + separator + `testdata.go, line 5).
 `
 
 	if result != expected {
