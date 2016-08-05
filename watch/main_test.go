@@ -8,6 +8,7 @@ import (
 	"bytes"
 	"io"
 	"os"
+	"runtime"
 	"testing"
 	"time"
 )
@@ -36,11 +37,11 @@ func TestNewCmd(t *testing.T) {
 	}
 
 	if len(cmd.Cmd) != len(cmds) {
-		t.Errorf("Epexcted the command to be called to be %v, but got %v", cmds, cmd.Cmd)
+		t.Errorf("Expected the command to be called to be %v, but got %v", cmds, cmd.Cmd)
 	} else {
 		for i, c := range cmd.Cmd {
 			if c != cmds[i] {
-				t.Errorf("Epexcted the command to be called to be %v, but got %v", cmds, cmd.Cmd)
+				t.Errorf("Expected the command to be called to be %v, but got %v", cmds, cmd.Cmd)
 				return // Running the command won't go correctly
 			}
 		}
@@ -55,14 +56,14 @@ func TestNewCmd(t *testing.T) {
 	}
 
 	if cmd.Quiet != false {
-		t.Error("Epexcted the command to output, but it's quiet")
+		t.Error("Expected the command to output, but it's quiet")
 		return // Running the command won't return anything, no point it testing it
 	}
 
 	got := getOutput(cmd, false)
 
 	if got != expected {
-		t.Errorf("Epexcted %s to be echoed, got %s", expected, got)
+		t.Errorf("Expected %s to be echoed, got %s", expected, got)
 	}
 }
 
@@ -78,7 +79,7 @@ func TestEmptyCmd(t *testing.T) {
 	got := getOutput(cmd, false)
 
 	if got != expected {
-		t.Errorf("Epexcted %s to be echoed, got %s", expected, got)
+		t.Errorf("Expected %s to be echoed, got %s", expected, got)
 	}
 }
 
@@ -89,11 +90,20 @@ func TestErrorCmd(t *testing.T) {
 		Timeout: instant,
 	}
 
-	expected := "exec: \"SOME_ERROR_COMMAND\": executable file not found in %PATH%\n"
-	got := getOutput(cmd, true)
+	expected := "exec: \"SOME_ERROR_COMMAND\": executable file not found in "
+	if runtime.GOOS == "windows" {
+		expected += "%PATH%\n"
+	} else {
+		expected += "$PATH\n"
+	}
+	if runtime.GOOS == "darwin" {
+		expected += "exec: not started\n"
+	}
+
+	got := getOutput(cmd, false)
 
 	if got != expected {
-		t.Errorf("Epexcted %s to be echoed, got %s", expected, got)
+		t.Errorf("Expected %s to be echoed, got %s", expected, got)
 	}
 }
 
