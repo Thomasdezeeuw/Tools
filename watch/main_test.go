@@ -94,10 +94,7 @@ func TestErrorCmd(t *testing.T) {
 	if runtime.GOOS == "windows" {
 		expected += "%PATH%\n"
 	} else {
-		expected += "$PATH\n"
-	}
-	if runtime.GOOS == "darwin" {
-		expected += "exec: not started\n"
+		expected += "$PATH\nexec: not started\n"
 	}
 
 	got := getOutput(cmd, false)
