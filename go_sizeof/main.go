@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"errors"
 	"flag"
+	"io/ioutil"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -43,14 +44,8 @@ func main() {
 }
 
 func createSource(path, t string) error {
-	f, err := os.Create(path)
-	if err != nil {
-		return err
-	}
-	defer f.Close()
-
 	var buf bytes.Buffer
-	err = tmpl.Execute(&buf, tmplData{
+	err := tmpl.Execute(&buf, tmplData{
 		Type: t,
 	})
 	if err != nil {
@@ -62,8 +57,7 @@ func createSource(path, t string) error {
 		return err
 	}
 
-	_, err = f.Write(source)
-	return err
+	return ioutil.WriteFile(path, source, 0666)
 }
 
 func runSource(path string) ([]byte, error) {
